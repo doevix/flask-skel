@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset=UTF-8>
+    <meta name="viewport" content="width=device_width" initial-scale=1.0>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/stylesheet.css">
+    <link rel="icon" href="/favicon.ico">
+</head>
+
+<body>
+    {% block nav_links %}{% endblock %}
+    {% block extra_headings %}{% endblock %}
+    <h1>
+        {% block header %}
+        {% endblock %}
+    </h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class=flashes>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+        {% endif %}
+     {% endwith %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
